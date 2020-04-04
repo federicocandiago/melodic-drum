@@ -6,13 +6,17 @@ class Loading extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { loadingText: "Loading.." };
+        this.state = { mounted: true, loadingText: "Loading.." };
     }
 
     componentDidMount(){
         setInterval(() => {
-            if (this.state.loadingText.length < 25) this.setState({loadingText: this.state.loadingText + '.'})
+            if (this.state.mounted && this.state.loadingText.length < 25) this.setState({loadingText: this.state.loadingText + '.'})
         }, 200);
+    }
+
+    componentWillUnmount() {
+        this.setState({mounted: false})
     }
 
 

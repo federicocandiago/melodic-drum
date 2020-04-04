@@ -9,11 +9,10 @@ class Pad extends Component {
         this.state = {};
     }
 
-
     render() {
         return (
             <View>
-                <Text>todo</Text>
+                <Text>ciao!</Text>
             </View>
         )
     }
