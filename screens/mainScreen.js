@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { Text, View, Button } from 'react-native';
-import styles from '../assets/styles/styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import notes from '../misc/notes';
 
 import Loading from '../components/loading';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+
 import TitleBar from '../components/titleBar';
 import Pad from '../components/pad';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 class MainScreen extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            loaded: false
+            loaded: false,
+            isGregorian: true
         };
     }
 
@@ -21,16 +22,24 @@ class MainScreen extends Component {
         this.setState({ loaded: true });
     }
 
-    alert() {
-        this.props.navigation.navigate('AboutScreen');
+    _setNotationState(value) {
+        this.setState({isGregorian: value})
+        console.log('value', value);
     }
-
 
     render() {
         return this.state.loaded ? (
             <SafeAreaView>
-                <TitleBar navigation={this.props.navigation} />
-                    <Pad />
+                <View style={{ height: '20%' }}>
+                    <TitleBar 
+                    navigation={this.props.navigation} 
+                    isGregorian={this.state.isGregorian} 
+                    setNotationState={(value)=>{this._setNotationState(value)}}
+                    />
+                </View>
+                <View style={{ height: '80%' }}>
+                    <Pad notes={notes} isGregorian={this.state.isGregorian}/>
+                </View>
             </SafeAreaView>
         ) : (<Loading />)
     }
