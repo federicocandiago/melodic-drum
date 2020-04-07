@@ -21,7 +21,7 @@ class AboutScreen extends Component {
     render() {
         return (
             <ScrollView>
-                <Text style={styles.title}>About</Text>
+                <Text style={styles.about}>About</Text>
                 <View style={styles.button}>
                     <Button onPress={() => { this.props.navigation.navigate('Main') }} title="Back" />
                 </View>

@@ -57,3 +57,7 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+package-lock.json
+your_key_name.keystore.old
+android/settings.gradle
+android/app/build.gradle

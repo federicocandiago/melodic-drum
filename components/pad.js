@@ -78,7 +78,8 @@ class Pad extends Component {
         container: {
             flexGrow: 1,
             flexWrap: 'wrap',
-            height: '100%'
+            height: '100%',
+            backgroundColor: '#000000'
         },
         rowContainer: {
             flexDirection: 'row',
