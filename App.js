@@ -32,7 +32,13 @@ const App: () => React$Node = () => {
         <Stack.Screen
           name="About"
           component={AboutScreen}
-          options={{ title: 'About' }}
+          options={{
+            title: 'About',
+            headerStyle: {
+              backgroundColor: '#464646'
+            },
+            headerTintColor: '#EEEEEE'
+          }}
         />
 
       </Stack.Navigator>

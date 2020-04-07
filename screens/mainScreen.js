@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import notes from '../misc/notes';
 import RNShake from 'react-native-shake';
@@ -40,20 +40,33 @@ class MainScreen extends Component {
 
     render() {
         return this.state.loaded ? (
-            <SafeAreaView style={{backgroundColor: '#000000', color: 'red'}}>
-                <View style={{ height: '20%' }}>
+            <SafeAreaView style={this.styles.safeAreaView}>
+                <View style={this.styles.title}>
                     <TitleBar 
                     navigation={this.props.navigation} 
                     isGregorian={this.state.isGregorian} 
                     setNotationState={(value)=>{this._setNotationState(value)}}
                     />
                 </View>
-                <View style={{ height: '80%' }}>
+                <View style={this.styles.pad}>
                     <Pad notes={notes} isGregorian={this.state.isGregorian}/>
                 </View>
             </SafeAreaView>
         ) : (<Loading />)
     }
+
+    styles = StyleSheet.create({
+        safeAreaView: {
+            backgroundColor: '#000000', 
+            color: 'red'
+        },
+        title: { 
+            height: '20%' 
+        },
+        pad: { 
+            height: '80%' 
+        }
+    })
 }
 
 export default MainScreen;

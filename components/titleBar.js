@@ -2,54 +2,55 @@ import React, { Component } from 'react';
 import { StyleSheet, Switch, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import styles from '../assets/styles/styles'
-
 class TitleBar extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            'isGregorian' : this.props.isGregorian
+            'isGregorian': this.props.isGregorian
         }
     }
 
     render() {
         return (
-            <View style={this.titleStyles.titleBar}>
-                    <Switch style={this.titleStyles.switchContainer}
-                        onValueChange={() => {this.props.setNotationState(!this.props.isGregorian)}}
-                        value={!this.props.isGregorian}
-                    />
+            <View style={this.styles.titleBar}>
+                <Switch style={this.styles.switch}
+                    trackColor={{ true: '#226622', false: '#777777'}}
+                    onValueChange={() => { this.props.setNotationState(!this.props.isGregorian) }}
+                    value={!this.props.isGregorian}
+                />
 
-                <Text style={[this.titleStyles.title, this.titleStyles.centerm, this.titleStyles.contained]}>Shake for snares</Text>
-                <View style={this.titleStyles.aboutContainer}>
+                <Text style={[this.styles.title, this.styles.centerm, this.styles.contained]}>shake for 🥁</Text>
+                <View style={this.styles.aboutContainer}>
                     <TouchableOpacity onPress={() => { this.props.navigation.navigate('About') }}>
-                        <Text style={this.titleStyles.aboutButton}> ? </Text>
+                        <Text style={this.styles.aboutButton}> ? </Text>
                     </TouchableOpacity>
                 </View>
             </View>
         )
     }
 
-    titleStyles = StyleSheet.create({
+    styles = StyleSheet.create({
         aboutButton: {
             height: 40,
             width: 40,
             textAlign: "center",
             textAlignVertical: "center",
-            color: "#AAAAAA",
-            borderColor: "#AAAAAA",
-            backgroundColor: '#EEEEEE',
+            color: "#777777",
+            borderColor: "#777777",
+            backgroundColor: '#CCCCCC',
             borderWidth: 2,
-            borderRadius: 50
+            borderRadius: 50,
+            fontSize: 25,
+            fontFamily: "bold"
         },
-        title: {    
-            fontSize: 20,
+        title: {
+            fontSize: 25,
             color: '#FFFFFF',
             textAlign: 'center',
             textAlignVertical: 'center',
             margin: 20
-          },
+        },
         aboutContainer: {
             position: 'absolute',
             top: 20,
@@ -57,7 +58,7 @@ class TitleBar extends Component {
             justifyContent: 'center',
             alignItems: 'center'
         },
-        switchContainer: {
+        switch: {
             position: 'absolute',
             top: 25,
             left: 20

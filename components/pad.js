@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import styles from '../assets/styles/styles';
 import RNShake from 'react-native-shake';
 import PadButton from './padButton';
 import notes from '../misc/notes';
@@ -10,12 +9,6 @@ class Pad extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-    }
-
-    componentDidMount() {
-        RNShake.addEventListener('ShakeEvent', () => {
-            alert('TODO');
-        });
     }
 
     componentWillUnmount() {

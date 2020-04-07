@@ -27,13 +27,13 @@ class PadButton extends Component {
 
     render() {
         return (
-            <TouchableOpacity style={this.padButtonStyle.container} onPress={this._onPress}>
-                <Text style={this.padButtonStyle.button}>{this.props.isGregorian ? this.props.note.gregorian : this.props.note.anglosaxon}</Text>
+            <TouchableOpacity style={this.style.container} onPress={this._onPress}>
+                <Text style={this.style.button}>{this.props.isGregorian ? this.props.note.gregorian : this.props.note.anglosaxon}</Text>
             </TouchableOpacity>
         )
     }
 
-    padButtonStyle = StyleSheet.create({
+    style = StyleSheet.create({
         container: {
             height: '100%',
             flexDirection: 'row',
@@ -41,16 +41,18 @@ class PadButton extends Component {
         },
         button: {
             aspectRatio: 1,
-            width: '95%',
-            margin: '2.4%',
+            width: '94%',
+            margin: '3%',
             textAlign: "center",
             textAlignVertical: "center",
-            color: "#888888",
-            fontSize: 30,
-            borderColor: "#AAAAAA",
-            backgroundColor: '#DDDDDD',
-            borderWidth: 3,
-            borderRadius: 15,
+            color: "#777777",
+            fontSize: 40,
+            borderColor: "#777777",
+            backgroundColor: '#CCCCCC',
+            borderWidth: 4,
+            borderRadius: 20,
+            fontWeight: "bold",
+            fontFamily: "notoserif"
         }
     });
 
