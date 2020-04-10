@@ -1,5 +1,6 @@
 package com.melodicdrum;
 
+import com.kevinresol.react_native_sound_recorder.RNSoundRecorderPackage; 
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {

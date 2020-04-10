@@ -58,6 +58,8 @@ target 'melodicdrum' do
 
   pod 'react-native-shake', :path => '../node_modules/react-native-shake'
 
+  pod 'RNSoundRecorder', :path => '../node_modules/react-native-sound-recorder'
+
   target 'melodicdrumTests' do
     inherit! :complete
     # Pods for testing

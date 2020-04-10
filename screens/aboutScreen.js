@@ -12,7 +12,7 @@ class AboutScreen extends Component {
         return (
             <ScrollView style={this.styles.about}>
                 <Text style={this.styles.aboutText}>
-                    Use the switch on the upper left corner of the screen to change between Gregorian and Anglosaxon notation systems, press the keys to produce sounds, and shake the device to play the shakers.
+                    Press the 🔴 button to record, use the switch on the upper left corner of the screen to change between Gregorian and Anglosaxon notation systems, press the keys to produce sounds, and shake the device to play the shakers.
                     </Text>
                 <Text style={this.styles.aboutText}>
                     This piece of sofware is released under the <Text style={this.styles.link}
