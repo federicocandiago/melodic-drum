@@ -46,7 +46,7 @@ class PadButton extends Component {
             textAlign: "center",
             textAlignVertical: "center",
             color: "#777777",
-            fontSize: 40,
+            fontSize: 26,
             borderColor: "#777777",
             backgroundColor: '#CCCCCC',
             borderWidth: 4,
