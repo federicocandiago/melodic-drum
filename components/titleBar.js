@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Switch, Text, View } from 'react-native';
+import { StatusBar, StyleSheet, Switch, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class TitleBar extends Component {
@@ -14,8 +14,10 @@ class TitleBar extends Component {
     render() {
         return (
             <View style={this.styles.titleBar}>
+                <StatusBar hidden={true} />
+
                 <Switch style={this.styles.switch}
-                    trackColor={{ true: '#226622', false: '#777777'}}
+                    trackColor={{ true: '#226622', false: '#777777' }}
                     onValueChange={() => { this.props.setNotationState(!this.props.isGregorian) }}
                     value={!this.props.isGregorian}
                 />
