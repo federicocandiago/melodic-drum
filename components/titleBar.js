@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Switch, Text, View } from 'react-native';
+import { PermissionsAndroid, StatusBar, StyleSheet, Switch, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import SoundRecorder from 'react-native-sound-recorder';
+import SoundRecorder from 'react-native-sound-recorder'; //TODO: delete if expo is used. delete expo audio and unimodules
 import * as Animatable from 'react-native-animatable';
 
 class TitleBar extends Component {
@@ -17,19 +17,39 @@ class TitleBar extends Component {
     }
 
     //**** LOOK: setState({a:1}, () => {callback function, like then})
+
     _isRecording() {
         this.setState({ isRecording: !this.state.isRecording },
-            () => {
-                if (this.state.isRecording) {
-                    SoundRecorder.start(SoundRecorder.PATH_CACHE + '/test.mp4')
-                        .then(function () {
-                            console.log('started recording');
-                        });
-                } else {
-                    SoundRecorder.stop()
-                    .then(function(result) {
-                        console.log('stopped recording, audio file saved at: ' + result.path);
-                    });
+            async () => {
+                try {
+                    const granted = await PermissionsAndroid.request(
+                        PermissionsAndroid.PERMISSIONS.RECORD_AUDIO
+                    );
+                    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                        if (this.state.isRecording) {
+                            SoundRecorder.start(SoundRecorder.PATH_CACHE + '/test.mp4')
+                                // .then(function (p) {
+                                //     console.log('started recording', p);
+                                // });
+
+                            SoundRecorder.start(
+                                SoundRecorder.PATH_CACHE + 
+                                `/Metronomical_${new Date().toISOString().substr(2,19).replace(/\D/g,'')}.mp3`
+                                ).then((p) => {
+                                    console.log(`Started recording: ${p}`);
+                                });
+                        } else {
+
+                            console.log('stop')
+                            SoundRecorder.stop()
+                                .then(function (result) {
+                                    console.log('stopped recording, audio file saved at: ' + result.path);
+                                }
+                                );
+                        }
+                    }
+                } catch (e) {
+                    console.error(`Recording Error: ${e}`)
                 }
             }
         );
@@ -38,11 +58,13 @@ class TitleBar extends Component {
     render() {
         return (
             <View style={this.styles.titleBar}>
+                <StatusBar hidden={true} />
                 <Switch style={this.styles.switch}
                     trackColor={{ true: '#226622', false: '#777777' }}
                     onValueChange={() => { this.props.setNotationState(!this.props.isGregorian) }}
                     value={!this.props.isGregorian}
                 />
+
                 <Animatable.Text
                     style={[
                         this.styles.recordButton,
@@ -116,7 +138,6 @@ class TitleBar extends Component {
             backgroundColor: '#000000'
         }
     });
-
 }
 
 export default TitleBar;
