@@ -36,20 +36,20 @@ class TitleBar extends Component {
                                 SoundRecorder.PATH_CACHE + 
                                 `/Metronomical_${new Date().toISOString().substr(2,19).replace(/\D/g,'')}.mp3`
                                 ).then((p) => {
-                                    console.log(`Started recording: ${p}`);
+                                    alert(`Started recording: ${p}`);
                                 });
                         } else {
 
-                            console.log('stop')
+                            alert('stop')
                             SoundRecorder.stop()
                                 .then(function (result) {
-                                    console.log('stopped recording, audio file saved at: ' + result.path);
+                                    alert('stopped recording, audio file saved at: ' + result.path);
                                 }
                                 );
                         }
                     }
                 } catch (e) {
-                    console.error(`Recording Error: ${e}`)
+                    alert(`Recording Error: ${e}`)
                 }
             }
         );
